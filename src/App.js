@@ -11,7 +11,7 @@ class App extends React.Component {
   }
 
   callApi(){
-    fetch('http://localhost:9000/testApi')
+    fetch(process.env.TESTE_URL)
       .then(res => res.text())
       .then(res => this.setState({apiResponse: res}));
   }
