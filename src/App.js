@@ -11,7 +11,7 @@ class App extends React.Component {
   }
 
   callApi(){
-    fetch(process.env.TESTE_URL)
+    fetch('https://blitz-back.herokuapp.com/testApi')
       .then(res => res.text())
       .then(res => this.setState({apiResponse: res}));
   }
