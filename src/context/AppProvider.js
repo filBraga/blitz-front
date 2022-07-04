@@ -6,14 +6,16 @@ function Provider({ children }) {
     { id: 1, text: 'This is the First Task'},
     { id: 2, text: 'This is the Second Task'},
   ]);
+
+  const [apiResponse, setApiResponse] = useState('');
   
   const contextValue = {
-    tasks,
-    setTasks,
+    tasks, setTasks,
+    apiResponse, setApiResponse,
   };
 
   return (
-    <AppContext.Provider value={{tasks, setTasks, contextValue}}>
+    <AppContext.Provider value={contextValue}>
       {children}
     </AppContext.Provider>
   );
