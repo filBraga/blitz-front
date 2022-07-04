@@ -1,14 +1,12 @@
 import Button from "./Button"
 
-
 export default function Task(props) {
     return (
       <>
-        <h1>{props.taskId}</h1>
-        <h4>{props.text}</h4>
-        <Button buttonText='Remover' />
-        <Button buttonText='Editar'/>
-        <Button buttonText='Salvar'/>
+        <p>{props.taskId}. {props.text}</p>
+        <Button buttonText='Delete' />
+        <Button buttonText='Update'/>
+        <Button buttonText='Done'/>
       </>
     );
   
