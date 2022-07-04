@@ -5,7 +5,6 @@ import Title from './Title'
 import Task from './Task'
 import NewTask from './NewTask'
 
-
 export default function ToDoList() {
   const { apiResponse, setApiResponse, tasks } = useContext(AppContext);
 
