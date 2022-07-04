@@ -1,4 +1,4 @@
-import React, { useContext } from 'react'
+import React, { useContext, useEffect } from 'react'
 import AppContext from '../context/AppContext'
 
 import Title from './Title'
@@ -7,12 +7,23 @@ import NewTask from './NewTask'
 
 
 export default function ToDoList() {
-  const { tasks } = useContext(AppContext);
+  const { apiResponse, setApiResponse, tasks } = useContext(AppContext);
+
+  useEffect(() => {
+    async function fetchData() {
+    //  await fetch('https://blitz-back.herokuapp.com/testApi')
+     await fetch('http://localhost:9000/testApi')
+       .then(res => res.text())
+       .then(res => setApiResponse(res));
+    }
+    fetchData();
+  }, []);
+
 
   return (
     <div className='App'>
 
-    {/* <Title text={this.state.apiResponse} /> */}
+    <p>{apiResponse}</p>
 
     <Title text='To do test' />
 
@@ -21,7 +32,7 @@ export default function ToDoList() {
 
     { tasks.map((element) => {
         return ( 
-          <div className='DefaultComponent'> 
+          <div key={element.id} className='DefaultComponent'> 
             <Task text={element.text} taskId={element.id}/>
           </div>
         )
