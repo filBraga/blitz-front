@@ -9,23 +9,9 @@ function Provider({ children }) {
 
   const [apiResponse, setApiResponse] = useState('');
 
-  const createTask = (value) => {
-    console.log(value);
-    const { id } = tasks.at(-1);
-    setTasks(tasks.concat({id: id + 1, text: value}));
-  }
-
-  const deleteTask = () => {
-    console.log('Delete Task');
-    // let taskList = this.state.tasks
-    // taskList.splice(index, 1);
-    // this.setState({tasks: taskList})
-  }
-  
   const contextValue = {
     tasks, setTasks,
     apiResponse, setApiResponse,
-    createTask, deleteTask,
   };
 
   return (

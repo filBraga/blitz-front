@@ -1,10 +1,24 @@
-import { useRef } from 'react';
 import React, { useContext } from 'react'
+import { useRef } from 'react';
 import AppContext from '../context/AppContext'
 
 export default function Task(props) {
   const ref = useRef(null)
-  const { createTask } = useContext(AppContext)
+
+  const { tasks, setTasks } = useContext(AppContext);
+
+  const createTask = (value) => {
+    console.log(value);
+    let taskId = 0
+    try {
+      const { id } = tasks.at(-1);
+      taskId = id
+    } catch (error) {
+      // console.log(error);
+    }
+    setTasks(tasks.concat({id: taskId + 1, text: value}));
+  }
+
 
   return (
     <div className='DefaultComponent'>
