@@ -23,7 +23,7 @@ export default function ToDoList() {
   return (
     <div className='App'>
 
-    <Title text='To do test' />
+    <Title text='To Do List' />
 
     { tasks.length === 0 &&
       <h2>You have {tasks.length} tasks</h2> }
