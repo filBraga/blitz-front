@@ -2,10 +2,7 @@ import React, { useState } from 'react';
 import AppContext from './AppContext';
 
 function Provider({ children }) {
-  const [tasks, setTasks] = useState([
-    { id: 1, text: 'This is the First Task'},
-    { id: 2, text: 'This is the Second Task'},
-  ]);
+  const [tasks, setTasks] = useState([]);
 
   const [apiResponse, setApiResponse] = useState('');
 

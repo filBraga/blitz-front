@@ -11,6 +11,7 @@ export default function Task(props) {
   }
 
   const updateTask = (props) => {
+    // https://medium.com/@hayden.anderl33/build-a-full-crud-to-do-list-using-react-hooks-7a61ed09fcab
     const newTasks = [...tasks]
  
     let newItem = prompt(`Update ${props.text}?`, props.text)
@@ -21,6 +22,7 @@ export default function Task(props) {
   }
 
   const doneTask = (taskId) => {
+    // https://stackoverflow.com/questions/42630473/react-toggle-class-onclick
     console.log('Not implemented yet');
   }
   
