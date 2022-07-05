@@ -29,7 +29,7 @@ export default function Task(props) {
     return (
       <div>
 
-        <p>{props.taskId}. {props.text}</p>
+        <p>{props.text}</p>
 
         <button onClick={() => deleteTask(props.taskId)}>Delete</button>
 
