@@ -1,19 +1,20 @@
 import React, { useContext, useEffect } from 'react'
 import AppContext from '../context/AppContext'
+import axios from 'axios';
+
 
 import Title from './Title'
 import Task from './Task'
 import NewTask from './NewTask'
 
 export default function ToDoList() {
-  const { apiResponse, setApiResponse, tasks } = useContext(AppContext);
+  const { apiResponse, tasks, setTasks } = useContext(AppContext);
 
   useEffect(() => {
     async function fetchData() {
     //  await fetch('https://blitz-back.herokuapp.com/testApi')
-     await fetch('http://localhost:9000/testApi')
-       .then(res => res.text())
-       .then(res => setApiResponse(res));
+    const responseFetch = await axios.get('http://localhost:9000/tasks')
+      await setTasks(responseFetch.data)
     }
     fetchData();
   }, []);
@@ -21,8 +22,6 @@ export default function ToDoList() {
 
   return (
     <div className='App'>
-
-    <p>{apiResponse}</p>
 
     <Title text='To do test' />
 
@@ -38,6 +37,8 @@ export default function ToDoList() {
       }) }
 
     <NewTask />
+
+    <p>{apiResponse}</p>
 
     </div>
   )
