@@ -3,12 +3,13 @@ import AppContext from '../context/AppContext'
 import axios from 'axios';
 
 
+
 import Title from './Title'
 import Task from './Task'
 import NewTask from './NewTask'
 
 export default function ToDoList() {
-  const { apiResponse, tasks, setTasks } = useContext(AppContext);
+  const { apiResponse, tasks, setTasks, callAPI } = useContext(AppContext);
 
   useEffect(() => {
     async function fetchData() {
