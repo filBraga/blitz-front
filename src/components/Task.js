@@ -1,24 +1,24 @@
-import React, { useContext } from 'react'
-import AppContext from '../context/AppContext'
+import React from 'react'
+import axios from 'axios';
 
 export default function Task(props) {
 
-  const { tasks, setTasks } = useContext(AppContext);
-
   const deleteTask = (taskId) => {
-    const newTasks = tasks.filter(item => item.id !== taskId);
-    setTasks(newTasks);
+    const url = `http://localhost:9000/tasks/${taskId}`
+    axios.delete(url)
+    window.location.reload(false);
   }
 
-  const updateTask = (props) => {
+  const updateTask = (taskId) => {
     // https://medium.com/@hayden.anderl33/build-a-full-crud-to-do-list-using-react-hooks-7a61ed09fcab
-    const newTasks = [...tasks]
- 
     let newItem = prompt(`Update ${props.text}?`, props.text)
-    let newObj = {id: props.taskId, text: newItem}
+    console.log(newItem);
 
-    newTasks.splice(props.taskId - 1, 1, newObj)
-    setTasks(newTasks);
+    const url = `http://localhost:9000/tasks/${taskId}`
+    axios.put(url, {
+        text: newItem
+    })
+    window.location.reload(false);
   }
 
   const doneTask = (taskId) => {
@@ -33,7 +33,7 @@ export default function Task(props) {
 
         <button onClick={() => deleteTask(props.taskId)}>Delete</button>
 
-        <button onClick={() => updateTask(props)}>Update</button>
+        <button onClick={() => updateTask(props.taskId)}>Update</button>
 
         <button onClick={() => doneTask(props.taskId)}>Done</button>
 
