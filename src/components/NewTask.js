@@ -1,6 +1,8 @@
+import axios from 'axios';
 import React, { useContext } from 'react'
 import { useRef } from 'react';
 import AppContext from '../context/AppContext'
+import taskAPI from '../services/tasksAPI'
 
 export default function Task(props) {
   const ref = useRef(null)
@@ -8,7 +10,7 @@ export default function Task(props) {
   const { tasks, setTasks } = useContext(AppContext);
 
   const createTask = (value) => {
-    console.log(value);
+    // console.log(value);
     let taskId = 0
     try {
       const { id } = tasks.at(-1);
@@ -16,7 +18,10 @@ export default function Task(props) {
     } catch (error) {
       // console.log(error);
     }
-    setTasks(tasks.concat({id: taskId + 1, text: value}));
+    // setTasks(tasks.concat({id: taskId + 1, text: value}));
+    axios.post('http://localhost:9000/tasks', {
+      text: value
+    })
   }
 
 
