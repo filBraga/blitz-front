@@ -1,21 +1,17 @@
 import axios from 'axios';
-import React, { useContext } from 'react'
+import React from 'react'
 import { useRef } from 'react';
-import AppContext from '../context/AppContext'
 
 
 export default function Task(props) {
   const ref = useRef(null)
-  const { callAPI, setCallAPI } = useContext(AppContext);
 
-
-  const createTask = (value) => {
-    setCallAPI(callAPI + 1)
+  const createTask = async (value) => {
     axios.post('http://localhost:9000/tasks', {
       text: value
     })
+    window.location.reload(false);
   }
-
 
   return (
     <div className='DefaultComponent'>

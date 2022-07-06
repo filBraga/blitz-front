@@ -6,12 +6,9 @@ function Provider({ children }) {
 
   const [apiResponse, setApiResponse] = useState('');
 
-  let [callAPI, setCallAPI] = useState([0])
-
   const contextValue = {
     tasks, setTasks,
     apiResponse, setApiResponse,
-    callAPI, setCallAPI,
   };
 
   return (
